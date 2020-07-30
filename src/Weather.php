@@ -50,9 +50,9 @@ class Weather
 
         // 2. 封装 query 参数，并对空值进行过滤。
         $query = array_filter([
-            'key' => $this->key,
-            'city' => $city,
-            'output' => $format,
+            'key'        => $this->key,
+            'city'       => $city,
+            'output'     => $format,
             'extensions' => $type,
         ]);
 

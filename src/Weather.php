@@ -1,13 +1,19 @@
 <?php
 
+/*
+ * This file is part of the chenggx/weather.
+ *
+ * (c) chenggx
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.
+ */
 
 namespace Chenggx\Weather;
-
 
 use Chenggx\Weather\Exceptions\HttpException;
 use Chenggx\Weather\Exceptions\InvalidArgumentException;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\GuzzleException;
 
 class Weather
 {
@@ -44,9 +50,9 @@ class Weather
 
         // 2. 封装 query 参数，并对空值进行过滤。
         $query = array_filter([
-            'key'        => $this->key,
-            'city'       => $city,
-            'output'     => $format,
+            'key' => $this->key,
+            'city' => $city,
+            'output' => $format,
             'extensions' => $type,
         ]);
 
@@ -59,7 +65,7 @@ class Weather
 
             // 4. 返回值根据 $format 返回不同的格式，
             // 当 $format 为 json 时，返回数组格式，否则为 xml。
-            return $format === 'json' ? \json_decode($response, true) : $response;
+            return 'json' === $format ? \json_decode($response, true) : $response;
         } catch (\Exception $e) {
             // 5. 当调用出现异常时捕获并抛出，消息为捕获到的异常消息，
             // 并将调用异常作为 $previousException 传入。
